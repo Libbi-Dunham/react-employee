@@ -20,7 +20,7 @@ export default function App() {
             <Auth />
           </Route>
           <Route path="/register">
-            <Auth />
+            <Auth isSigningUp={true} />
           </Route>
           <Route path="/confirm-email">
             <ConfirmEmail />
