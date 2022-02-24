@@ -32,11 +32,11 @@ export default function Auth({ isSigningUp = false }) {
         />
         {isSigningUp ? (
           <p>
-            Make an Account? <Link to="/register">Sign Up</Link>
+            Have an Account? <Link to="/login">Sign In</Link>
           </p>
         ) : (
           <p>
-            Have an Account? <Link to="/login">Sign In</Link>
+            Make an Account? <Link to="/register">Sign Up</Link>
           </p>
         )}
       </div>

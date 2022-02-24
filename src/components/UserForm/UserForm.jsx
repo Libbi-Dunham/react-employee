@@ -6,8 +6,6 @@ export default function UserForm({ className = '', label, onSubmit }) {
     useForm({
       email: '',
       password: '',
-      bio: '',
-      date: '',
     });
 
   useEffect(() => {
@@ -16,7 +14,7 @@ export default function UserForm({ className = '', label, onSubmit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password, bio } = formState;
+    const { email, password } = formState;
 
     try {
       setFormError('');
@@ -47,26 +45,6 @@ export default function UserForm({ className = '', label, onSubmit }) {
           type="password"
           name="password"
           value={formState.password}
-          onChange={handleFormChange}
-        />
-      </section>
-      <section>
-        <label htmlFor="bio">Bio: </label>
-        <input
-          id="bio"
-          type="text"
-          name="bio"
-          value={formState.bio}
-          onChange={handleFormChange}
-        />
-      </section>
-      <section>
-        <label htmlFor="date">Date: </label>
-        <input
-          id="date"
-          type="date"
-          name="date"
-          value={formState.date}
           onChange={handleFormChange}
         />
       </section>
