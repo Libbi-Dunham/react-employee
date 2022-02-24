@@ -8,10 +8,10 @@ export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
   const history = useHistory();
 
-  const handleAuth = async (email, password) => {
+  const handleAuth = async (email, password, bio, date) => {
     try {
       if (isSigningUp) {
-        await signUpUser(email, password);
+        await signUpUser(email, password, bio, date);
         history.push('/confirm-email');
       } else {
         const response = await signInUser(email, password);
@@ -32,11 +32,11 @@ export default function Auth({ isSigningUp = false }) {
         />
         {isSigningUp ? (
           <p>
-            Have an Account? <Link to="/login">Sign In</Link>
+            Make an Account? <Link to="/register">Sign Up</Link>
           </p>
         ) : (
           <p>
-            Make an Account? <Link to="/register">Sign Up</Link>
+            Have an Account? <Link to="/login">Sign In</Link>
           </p>
         )}
       </div>
