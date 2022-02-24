@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-// import AuthButton from '../../components/AuthButton/AuthButton';
+import AuthButton from '../../components/AuthButton/AuthButton';
 
 export default function Header() {
   const { user } = useUser();
@@ -19,7 +19,7 @@ export default function Header() {
           ) : (
             <span>Not Signed In</span>
           )}
-          {/* <AuthButton /> */}
+          <AuthButton />
         </p>
       </header>
     </>
