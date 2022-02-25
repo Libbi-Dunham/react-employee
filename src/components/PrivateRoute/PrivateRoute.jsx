@@ -7,7 +7,7 @@ export default function PrivateRoute({ children, ...rest }) {
   return (
     <Route
       {...rest}
-      render={({ location }) => {
+      render={({ location }) =>
         user.email ? (
           children
         ) : (
@@ -17,8 +17,8 @@ export default function PrivateRoute({ children, ...rest }) {
               state: { from: location },
             }}
           />
-        );
-      }}
+        )
+      }
     />
   );
 }

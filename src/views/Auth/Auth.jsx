@@ -8,10 +8,10 @@ export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
   const history = useHistory();
 
-  const handleAuth = async (email, password, bio, date) => {
+  const handleAuth = async (email, password) => {
     try {
       if (isSigningUp) {
-        await signUpUser(email, password, bio, date);
+        await signUpUser(email, password);
         history.push('/confirm-email');
       } else {
         const response = await signInUser(email, password);
