@@ -5,7 +5,7 @@ import { useUser } from '../../context/UserContext';
 import { useProfile } from '../../context/ProfileContext';
 import { useForm } from '../../hooks/useForm';
 
-export default function ProfileForm({ className = '', label, onSubmit }) {
+export default function ProfileForm({ className = '', label, handleProfile }) {
   //   const [name, setName] = useState('');
   //   const [email, setEmail] = useState('');
   //   const [bio, setBio] = useState('');
@@ -41,8 +41,8 @@ export default function ProfileForm({ className = '', label, onSubmit }) {
     e.preventDefault();
     const { name, email, bio, birthday } = formState;
     try {
-      await onSubmit({ name, email, bio, birthday });
-      alert('Profile Created!');
+      await handleProfile({ name, email, bio, birthday });
+      //   alert('Profile Created!');
       history.push('/profile');
     } catch (error) {
       setFormError(error.message);
@@ -62,53 +62,56 @@ export default function ProfileForm({ className = '', label, onSubmit }) {
 
   return (
     <>
-      {loading && <p>Loading</p>}
-      <form className={className} onSubmit={handleSubmit}>
-        <legend>{label}</legend>
-        <section>
-          <label htmlFor="name">Name: </label>
-          <input
-            id="name"
-            type="name"
-            name="name"
-            value={formState.name}
-            onChange={handleFormChange}
-          />
+      {loading ? (
+        <p>Loading</p>
+      ) : (
+        <form className={className} onSubmit={handleSubmit}>
+          <legend>{label}</legend>
           <section>
-            <label htmlFor="email">Email: </label>
+            <label htmlFor="name">Name: </label>
             <input
-              id="email"
-              type="email"
-              name="email"
-              disabled={true}
-              value={formState.email}
+              id="name"
+              type="name"
+              name="name"
+              value={formState.name}
+              onChange={handleFormChange}
+            />
+            <section>
+              <label htmlFor="email">Email: </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                // disabled={true}
+                value={formState.email}
+                onChange={handleFormChange}
+              />
+            </section>
+          </section>
+          <section>
+            <label htmlFor="bio">Bio: </label>
+            <input
+              id="bio"
+              type="bio"
+              name="bio"
+              value={formState.bio}
               onChange={handleFormChange}
             />
           </section>
-        </section>
-        <section>
-          <label htmlFor="bio">Bio: </label>
-          <input
-            id="bio"
-            type="bio"
-            name="bio"
-            value={formState.bio}
-            onChange={handleFormChange}
-          />
-        </section>
-        <section>
-          <label htmlFor="birthday">Birthday: </label>
-          <input
-            id="birthday"
-            type="date"
-            name="birthday"
-            value={formState.birthday}
-            onChange={handleFormChange}
-          />
-        </section>
-        <button type="submit">Save</button>
-        {formError && <p>{formError}</p>}
-      </form>
+          <section>
+            <label htmlFor="birthday">Birthday: </label>
+            <input
+              id="birthday"
+              type="date"
+              name="birthday"
+              value={formState.birthday}
+              onChange={handleFormChange}
+            />
+          </section>
+          <button type="submit">Save</button>
+          {formError && <p>{formError}</p>}
+        </form>
+      )}
     </>
   );
 }

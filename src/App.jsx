@@ -7,7 +7,8 @@ import ConfirmEmail from './views/Auth/ConfirmEmail';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Header from './components/Layout/Header';
 import UserProfile from './views/UserProfile/UserProfile';
-import ProfileForm from './views/ProfileForm/ProfileForm';
+// import ProfileForm from './views/ProfileForm/ProfileForm';
+import Profile from './views/Profile/Profile';
 import { ProfileProvider } from './context/ProfileContext';
 
 export default function App() {
@@ -18,10 +19,10 @@ export default function App() {
         <Switch>
           <ProfileProvider>
             <PrivateRoute path="/profile/edit">
-              <ProfileForm />
+              <Profile />
             </PrivateRoute>
             <PrivateRoute path="/profile/create">
-              <ProfileForm creating={true} />
+              <Profile creating={true} />
             </PrivateRoute>
             <PrivateRoute path="/profile">
               <UserProfile />

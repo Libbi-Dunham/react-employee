@@ -10,13 +10,13 @@ export default function Profile({ creating = false }) {
   const { setProfile } = useProfile();
   const history = useHistory();
 
-  const handleProfile = async (name, email, bio, birthday) => {
+  const handleProfile = async ({ name, email, bio, birthday }) => {
     try {
       if (creating) {
-        await createProfile(name, email, bio, birthday);
+        await createProfile({ name, email, bio, birthday });
         <Redirect to="/profile" />;
       } else {
-        const response = await updateProfile(name, email, bio, birthday);
+        const response = await updateProfile({ name, email, bio, birthday });
         setProfile({
           name: response.name,
           email: response.email,
@@ -32,7 +32,7 @@ export default function Profile({ creating = false }) {
   return (
     <>
       {creating ? 'Create Profile' : 'Edit Profile'}
-      <ProfileForm onSubmit={handleProfile} />
+      <ProfileForm handleProfile={handleProfile} />
     </>
   );
 }
