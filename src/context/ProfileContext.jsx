@@ -1,43 +1,43 @@
-import { createContext, useContext, useState, useMemo, useEffect } from 'react';
-import { getProfile } from '../services/profiles';
+// import { createContext, useContext, useState, useMemo, useEffect } from 'react';
+// import { getProfile } from '../services/profiles';
 
-export const ProfileContext = createContext();
+// export const ProfileContext = createContext();
 
-function ProfileProvider({ children }) {
-  const [profile, setProfile] = useState({
-    name: '',
-    email: '',
-    bio: '',
-    birthday: '',
-  });
+// function ProfileProvider({ children }) {
+//   const [profile, setProfile] = useState({
+//     name: '',
+//     email: '',
+//     bio: '',
+//     birthday: '',
+//   });
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await getProfile();
-        setProfile(response);
-      } catch (error) {
-        setProfile({ name: '', email: '', bio: '', birthday: '' });
-      }
-    };
-    fetchProfile();
-  }, []);
+//   useEffect(() => {
+//     const fetchProfile = async () => {
+//       try {
+//         const response = await getProfile();
+//         setProfile(response);
+//       } catch (error) {
+//         setProfile({ name: '', email: '', bio: '', birthday: '' });
+//       }
+//     };
+//     fetchProfile();
+//   }, []);
 
-  const value = useMemo(() => {
-    profile, setProfile;
-  }, [profile]);
+//   const value = useMemo(() => {
+//     profile, setProfile;
+//   }, [profile]);
 
-  return (
-    <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>
-  );
-}
+//   return (
+//     <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>
+//   );
+// }
 
-const useProfile = () => {
-  const context = useContext(ProfileContext);
-  if (context === undefined) {
-    throw new Error('has to be within a ProfileProvider');
-  }
-  return context;
-};
+// const useProfile = () => {
+//   const context = useContext(ProfileContext);
+//   if (context === undefined) {
+//     throw new Error('has to be within a ProfileProvider');
+//   }
+//   return context;
+// };
 
-export { ProfileProvider, useProfile };
+// export { ProfileProvider, useProfile };
