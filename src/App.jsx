@@ -15,11 +15,11 @@ export default function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <PrivateRoute path="/profile">
-            <UserProfile />
-          </PrivateRoute>
           <PrivateRoute path="/profile/edit">
             <ProfileForm />
+          </PrivateRoute>
+          <PrivateRoute path="/profile">
+            <UserProfile />
           </PrivateRoute>
           <Route exact path="/">
             <Home />
