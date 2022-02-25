@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useMemo, useEffect } from 'react';
+import { getProfile } from '../services/profiles';
 
 export const ProfileContext = createContext();
 
