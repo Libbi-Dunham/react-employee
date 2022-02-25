@@ -20,6 +20,9 @@ export default function App() {
             <PrivateRoute path="/profile/edit">
               <ProfileForm />
             </PrivateRoute>
+            <PrivateRoute path="/profile/create">
+              <ProfileForm creating={true} />
+            </PrivateRoute>
             <PrivateRoute path="/profile">
               <UserProfile />
             </PrivateRoute>
